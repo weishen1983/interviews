@@ -10,10 +10,6 @@ New operation "->"
 Left: parameters from an abstract method
 Right: way to implement the abstract method
 
-???Functional Interface: one interface who should only have one abstract method
-Comparator
-???
-
 Grammar Format 1:
 no parameter and no return value for the abstract method
 () -> System.out.println("Hello Lambda!");
@@ -30,6 +26,9 @@ More than one parameter and has return value and there are multiple lines in Lam
     return x.compareTo(y);
 };
 (x,y) -> Integer.compare(x,y);
+
+Functional Interface: one interface who should only have one abstract method
+
 
 */
 public class JavaLambdaGrammarTest {
@@ -68,6 +67,29 @@ public class JavaLambdaGrammarTest {
         //if only have one statement and has return value. then you can use lambda without bracket and return key word
         Comparator<Integer> c2 = (x,y) -> Integer.compare(x,y);
         System.out.println(c2.compare(2, 1));
+    }
+
+    //Use Lambda to convert a string to uppercase and lowercase
+    @Test
+    public void testLambdaFunciton1(){
+        String source = "Hello Lambda";
+        System.out.println(convertString(source, s -> s.toUpperCase() ));
+        System.out.println(convertString(source, s -> s.toLowerCase() ));
+    }
+
+    private String convertString(String s, MyFunction mf){
+        return mf.getValue(s);
+    }
+
+    //Use Lambda to get the sum and product of two number
+    @Test
+    public void testLambdaFunciton2(){
+        calculate(10L, 20L, (num1, num2) -> num1 + num2);
+        calculate(10L, 20L, (num1, num2) -> num1 * num2);
+    }
+
+    private void calculate(Long num1, Long num2, NumberCalculation<Long, Long> nc){
+        System.out.println(nc.calculate(num1, num2));
     }
 
 }
