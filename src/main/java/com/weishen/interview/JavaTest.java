@@ -6,4 +6,8 @@ public class JavaTest {
         String s = args[0];
         System.out.println("aaa");
     }
+
+    public static void test(){
+
+    }
 }
