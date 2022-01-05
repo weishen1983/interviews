@@ -66,7 +66,10 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return age == employee.age && Double.compare(employee.salary, salary) == 0 && Objects.equals(name, employee.name) && status == employee.status;
+        return age == employee.age
+                && Double.compare(employee.salary, salary) == 0
+                && Objects.equals(name, employee.name)
+                && status == employee.status;
     }
 
     @Override
