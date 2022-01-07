@@ -91,7 +91,7 @@ public class LeetCode20 {
 
     @Test
     public void test() {
-        String inputStr = "(){}}{";
+        String inputStr = "{[()]}";
         Assert.assertTrue(isValid(inputStr));
     }
 }
