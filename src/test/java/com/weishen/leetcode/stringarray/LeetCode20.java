@@ -34,7 +34,6 @@ public class LeetCode20 {
             return false;
         }
         char[] chars = s.toCharArray();
-        boolean noRightBracket = true;
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < chars.length; i++) {
             char currentBracket = chars[i];
@@ -46,14 +45,10 @@ public class LeetCode20 {
                 continue;
             }
             if (isRightBracket(currentBracket)) {
-                noRightBracket = false;
                 if (stack.isEmpty() || !isMatchedBracket(stack.pop().charValue(), currentBracket)) {
                     return false;
                 }
             }
-        }
-        if (noRightBracket) {
-            return false;
         }
         if (!stack.isEmpty()) {
             return false;

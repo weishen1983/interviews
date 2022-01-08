@@ -20,7 +20,7 @@ package com.weishen.leetcode.stringarray;
  * Input: s = "azxxzy"
  * Output: "ay"
  */
-public class LeetCode1047 {
+public class TODO_LeetCode1047 {
 
     public String removeDuplicates(String s) {
 

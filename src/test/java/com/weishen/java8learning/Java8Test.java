@@ -23,12 +23,14 @@ public class Java8Test {
     //Need the name list of all employees who is older than 35
     public void test1(){
         List<String> nameList = employees.stream()
-                .filter(e -> e.getSalary() > 35) //Lambda Expression and Functional Interface
-                //.map(e -> e.getName())
-                .map(Employee::getName) //Method Reference
+                .filter(e -> e.getAge() > 35) //Lambda Expression and Functional Interface
+                .map(e -> e.getName())
+                //.map(Employee::getName) //Method Reference
+                .sorted()
                 .collect(Collectors.toList());
 
         nameList.stream().forEach(System.out::println);
+        nameList.stream().forEach(name -> System.out.println(name));
     }
 
     //Lambda

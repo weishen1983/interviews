@@ -17,7 +17,7 @@ import org.junit.Test;
  * Input: a = "1010", b = "1011"
  * Output: "10101"
  */
-public class LeetCode67 {
+public class TODO_LeetCode67 {
     public String addBinary(String a, String b) {
 //        Integer numA = Integer.parseInt(a, 2);
 //        Integer numB = Integer.parseInt(b, 2);
