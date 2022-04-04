@@ -10,6 +10,7 @@ import java.util.Set;
  */
 public class LeetCode160 {
 
+    //test
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         Set<Integer> set = new HashSet<>();
         while (headA != null) {
