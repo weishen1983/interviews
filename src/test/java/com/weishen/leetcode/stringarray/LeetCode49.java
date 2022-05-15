@@ -40,23 +40,21 @@ import java.util.stream.Stream;
 public class LeetCode49 {
 
     public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> resultList = new ArrayList<>();
         Map<String, List<String>> map = new HashMap<>();
-        for (int i = 0; i < strs.length; i++) {
-            String key = sortString(strs[i]);
+        for (String s : strs) {
+            String key = sortString(s);
             if (map.containsKey(key)) {
-                map.get(key).add(strs[i]);
+                map.get(key).add(s);
             } else {
                 List<String> list = new ArrayList<>();
-                list.add(strs[i]);
+                list.add(s);
                 map.put(key, list);
             }
         }
-
-        List<List<String>> resultList = new ArrayList<>();
         for (Map.Entry<String, List<String>> entry : map.entrySet()) {
             resultList.add(entry.getValue());
         }
-
         return resultList;
     }
 

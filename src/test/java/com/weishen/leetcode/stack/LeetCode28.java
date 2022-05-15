@@ -1,4 +1,4 @@
-package com.weishen.leetcode.stringarray;
+package com.weishen.leetcode.stack;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -32,29 +32,29 @@ import org.junit.Test;
 public class LeetCode28 {
 
     public int strStr(String haystack, String needle) {
-        if ("".equals(needle)) {
+        if (needle.length() == 0) {
             return 0;
         }
-        if (haystack.length() < needle.length()) {
-            return -1;
-        }
-        char[] hs = haystack.toCharArray();
-        char[] ns = needle.toCharArray();
-        for (int i = 0; i < hs.length; i++) {
-            if (ns.length > hs.length - i) {
-                return -1;
-            }
-            int hCurrentIndex = i;
-            boolean isFindNeedle = true;
-            for (int j = 0; j < ns.length; j++) {
-                if (ns[j] != hs[hCurrentIndex]) {
-                    isFindNeedle = false;
-                    break;
+        for (int i=0; i<haystack.length(); i++) {
+            if (haystack.charAt(i) != needle.charAt(0)) {
+                continue;
+            } else {
+                int startIndex = i;
+                boolean hasMatch = true;
+                for (int j=0; j<needle.length(); j++) {
+                    if (startIndex >= haystack.length()) {
+                        return -1;
+                    }
+                    if (haystack.charAt(startIndex) != needle.charAt(j)) {
+                        hasMatch = false;
+                        break;
+                    } else {
+                        startIndex++;
+                    }
                 }
-                hCurrentIndex++;
-            }
-            if (isFindNeedle) {
-                return i;
+                if (hasMatch) {
+                    return i;
+                }
             }
         }
         return -1;

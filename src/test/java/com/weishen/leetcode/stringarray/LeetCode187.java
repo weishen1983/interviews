@@ -36,20 +36,12 @@ public class LeetCode187 {
 
     public List<String> findRepeatedDnaSequences(String s) {
         List<String> resultList = new ArrayList<>();
-        if (s.length() <= 10) {
-            return resultList;
-        }
         Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i <= s.length() - 10 ; i++) {
-            String key = s.substring(i, i + 10);
-            if (map.containsKey(key)) {
-                Integer value = map.get(key);
-                if (value.intValue() == 1) {
-                    resultList.add(key);
-                }
-                map.put(key, Integer.valueOf(value.intValue() + 1));
-            } else {
-                map.put(key, Integer.valueOf(1));
+        for (int i=0; i<=s.length()-10; i++) {
+            String dna = s.substring(i, i+10);
+            map.put(dna, map.getOrDefault(dna, 0) + 1);
+            if (map.get(dna)==2) {
+                resultList.add(dna);
             }
         }
         return resultList;

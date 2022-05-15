@@ -30,30 +30,24 @@ import org.junit.Test;
 public class LeetCode125 {
 
     public boolean isPalindrome(String s) {
-        char[] chars = s.toCharArray();
-        int i = 0;
-        int j = chars.length - 1;
-        while (i < j) {
-            char leftChar = Character.toLowerCase(chars[i]);
-            char rightChar = Character.toLowerCase(chars[j]);
-            if (isAlphanumeric(leftChar) && isAlphanumeric(rightChar)) {
-                if (leftChar != rightChar) {
-                    return false;
-                } else {
-                    i++;
-                    j--;
-                    continue;
-                }
-            }
-            if (!isAlphanumeric(leftChar) && isAlphanumeric(rightChar)) {
+        int i=0, j=s.length()-1;
+        while (i<=j) {
+            //left
+            char left = s.charAt(i);
+            if (!isAlphanumeric(left)) {
                 i++;
                 continue;
             }
-            if (isAlphanumeric(leftChar) && !isAlphanumeric(rightChar)) {
+            //right
+            char right = s.charAt(j);
+            if (!isAlphanumeric(right)) {
                 j--;
                 continue;
             }
-            if (!isAlphanumeric(leftChar) && !isAlphanumeric(rightChar)) {
+
+            if (Character.toLowerCase(left)!=Character.toLowerCase(right)) {
+                return false;
+            } else {
                 i++;
                 j--;
             }
@@ -62,15 +56,20 @@ public class LeetCode125 {
     }
 
     private boolean isAlphanumeric(char c) {
-        if (c == 'a' || c == 'b' || c == 'c' || c == 'd' || c == 'e' || c == 'f' || c == 'g' || c == 'h' || c == 'i' || c == 'j' || c == 'k'
-                || c == 'l' || c == 'm' || c == 'n' || c == 'o' || c == 'p' || c == 'q' || c == 'r' || c == 's' || c == 't' || c == 'u'
-                || c == 'v' || c == 'w' || c == 'x' || c == 'y' || c == 'z'
-                || c == '1' || c == '2' || c == '3' || c == '4' || c == '5'
-                || c == '6' || c == '7' || c == '8' || c == '9' || c == '0') {
+        if (c=='a' || c=='b' || c=='c' || c=='d' || c=='e' || c=='f' || c=='g'
+                || c=='h' || c=='i' || c=='j' || c=='k' || c=='l' || c=='m' || c=='n'
+                || c=='o' || c=='p' || c=='q' || c=='r' || c=='s' || c=='t' || c=='u'
+                || c=='v' || c=='w' || c=='x' || c=='y' || c=='z' || c=='A' || c=='B'
+                || c=='C' || c=='D' || c=='E' || c=='F' || c=='G' || c=='H' || c=='I'
+                || c=='J' || c=='K' || c=='L' || c=='M' || c=='N' || c=='O' || c=='P'
+                || c=='Q' || c=='R' || c=='S' || c=='T' || c=='U' || c=='V' || c=='W'
+                || c=='X' || c=='Y' || c=='Z' || c=='0' || c=='1' || c=='2' || c=='3'
+                || c=='4' || c=='5' || c=='6' || c=='7' || c=='8' || c=='9') {
             return true;
         } else {
             return false;
         }
+
     }
 
     @Test

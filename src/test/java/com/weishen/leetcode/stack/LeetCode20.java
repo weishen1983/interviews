@@ -1,4 +1,4 @@
-package com.weishen.leetcode.stringarray;
+package com.weishen.leetcode.stack;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,22 +30,13 @@ import java.util.Stack;
 public class LeetCode20 {
 
     public boolean isValid(String s) {
-        if (s.length() % 2 != 0) {
-            return false;
-        }
         char[] chars = s.toCharArray();
         Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < chars.length; i++) {
-            char currentBracket = chars[i];
-            if (i == 0 && isRightBracket(currentBracket)) {
-                return false;
-            }
-            if (isLeftBracket(currentBracket)) {
-                stack.push(currentBracket);
-                continue;
-            }
-            if (isRightBracket(currentBracket)) {
-                if (stack.isEmpty() || !isMatchedBracket(stack.pop().charValue(), currentBracket)) {
+        for (char c : chars) {
+            if (isLeftBracket(c)) {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty() || !isMatch(stack.pop().charValue(), c)) {
                     return false;
                 }
             }
@@ -57,27 +48,19 @@ public class LeetCode20 {
     }
 
     private boolean isLeftBracket(char c) {
-        if (c == '(' || c == '[' || c == '{') {
+        if (c=='(' || c=='[' || c=='{' ) {
             return true;
         } else {
             return false;
         }
     }
 
-    private boolean isRightBracket(char c) {
-        if (c == ')' || c == ']' || c == '}') {
+    private boolean isMatch(char left, char right) {
+        if (left=='(' && right==')') {
             return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean isMatchedBracket(char leftBracket, char rightBracket) {
-        if (leftBracket == '(' && rightBracket == ')') {
+        } else if (left=='[' && right==']') {
             return true;
-        } else if (leftBracket == '[' && rightBracket == ']') {
-            return true;
-        } else if (leftBracket == '{' && rightBracket == '}') {
+        } else if (left=='{' && right=='}') {
             return true;
         } else {
             return false;

@@ -34,6 +34,8 @@ import java.util.Set;
  *
  * 0 <= s.length <= 5 * 104
  * s consists of English letters, digits, symbols and spaces.
+ *
+ * HashSet
  */
 public class LeetCode3 {
 
@@ -53,10 +55,27 @@ public class LeetCode3 {
         return maxLength;
     }
 
+
     @Test
     public void test() {
         String s = "pwwkew";
         System.out.println(lengthOfLongestSubstring(s));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

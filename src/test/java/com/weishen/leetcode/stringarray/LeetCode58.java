@@ -30,9 +30,27 @@ import java.util.Arrays;
 public class LeetCode58 {
 
     public int lengthOfLastWord(String s) {
-        String[] sArrays = s.trim().split(" ");
-        return sArrays[sArrays.length-1].length();
+        int length = 0;
+        boolean foundWord = false;
+        for (int j=s.length()-1; j>=0; j--) {
+            if (foundWord && s.charAt(j) != ' ') {
+                length ++;
+            }
+            if (foundWord && s.charAt(j) == ' ') {
+                break;
+            }
+            if (!foundWord && s.charAt(j) != ' ') {
+                length ++;
+                foundWord = true;
+            }
+        }
+        return length;
     }
+
+//    public int lengthOfLastWord(String s) {
+//        String[] sArrays = s.trim().split(" ");
+//        return sArrays[sArrays.length-1].length();
+//    }
 
     @Test
     public void test(){

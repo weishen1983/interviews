@@ -1,9 +1,6 @@
 package com.weishen.leetcode.stringarray;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given two stings ransomNote and magazine, return true if ransomNote can be constructed from magazine and false otherwise.
@@ -26,7 +23,30 @@ import java.util.List;
  * Output: true
  */
 public class LeetCode383 {
+
     public boolean canConstruct(String ransomNote, String magazine) {
+        if (ransomNote.length() > magazine.length()) {
+            return false;
+        }
+        Map<Character, Integer> map = new HashMap<>();
+        for(int i=0; i<magazine.length(); i++) {
+            map.put(magazine.charAt(i), map.getOrDefault(magazine.charAt(i),0)+1);
+        }
+        for(int i=0; i<ransomNote.length(); i++) {
+            if (map.containsKey(ransomNote.charAt(i))) {
+                if (map.get(ransomNote.charAt(i)) == 1) {
+                    map.remove(ransomNote.charAt(i));
+                } else {
+                    map.put(ransomNote.charAt(i), map.get(ransomNote.charAt(i))-1);
+                }
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean canConstruct1(String ransomNote, String magazine) {
         char[] ransomNoteChars = ransomNote.toCharArray();
         char[] magazineChars = magazine.toCharArray();
 
@@ -60,7 +80,7 @@ public class LeetCode383 {
         return true;
     }
 
-    public boolean canConstruct1(String ransomNote, String magazine) {
+    public boolean canConstruct2(String ransomNote, String magazine) {
         if (ransomNote.length() > magazine.length()) {
             return false;
         }

@@ -35,16 +35,21 @@ If all assertions pass, then your solution will be accepted.
 public class LeetCode26 {
 
     public int removeDuplicates(int[] nums) {
-        int i = 0;
-        int j = 0;
-        while(j < nums.length){
-            if (i == 0 || nums[i-1] != nums[j]){
-                nums[i++] = nums[j++];
+        if (nums.length == 1) {
+            return 1;
+        }
+        int i=0;
+        for(int j=1; j<nums.length; j++) {
+            if (nums[i] == nums[j]) {
+                nums[j] = -101;
             } else {
-                j++;
+                i++;
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
             }
         }
-        return i;
+        return i+1;
     }
 
     @Test

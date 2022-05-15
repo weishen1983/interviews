@@ -19,9 +19,6 @@ public class LeetCode206 {
 
     //test
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return head;
-        }
         ListNode pre = null;
         while (head != null) {
             ListNode temp = head.next;

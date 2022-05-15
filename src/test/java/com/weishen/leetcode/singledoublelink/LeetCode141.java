@@ -12,6 +12,22 @@ import java.util.Set;
  */
 public class LeetCode141 {
 
+    //O(1) Solution
+    //Use two pointers, walker and runner.
+    //walker moves step by step. runner moves two steps at time.
+    //if the Linked List has a cycle walker and runner will meet at some point.
+    public boolean hasCycle1(ListNode head) {
+        if(head==null) return false;
+        ListNode walker = head;
+        ListNode runner = head;
+        while(runner.next!=null && runner.next.next!=null) {
+            walker = walker.next;
+            runner = runner.next.next;
+            if(walker==runner) return true;
+        }
+        return false;
+    }
+
     public boolean hasCycle(ListNode head) {
         Set<Integer> set = new HashSet<>();
         while (head != null) {

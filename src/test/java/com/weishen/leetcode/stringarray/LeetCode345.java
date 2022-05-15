@@ -23,37 +23,31 @@ public class LeetCode345 {
 
     public String reverseVowels(String s) {
         char[] chars = s.toCharArray();
-        int i = 0;
-        int j = chars.length - 1;
-        while (i < j) {
-            if (isVowels(chars[i]) && isVowels(chars[j])) {
-                char temp = chars[i];
-                chars[i] = chars[j];
-                chars[j] = temp;
-                i++;
-                j--;
-                continue;
-            }
-            if (!isVowels(chars[i]) && !isVowels(chars[j])) {
-                i++;
-                j--;
-                continue;
-            }
-            if (isVowels(chars[i]) && !isVowels(chars[j])) {
-                j--;
-                continue;
-            }
-            if (!isVowels(chars[i]) && isVowels(chars[j])) {
+        int i=0, j=chars.length-1;
+        while(i<=j) {
+            //left
+            if (!isVowels(chars[i])) {
                 i++;
                 continue;
             }
+            //right
+            if (!isVowels(chars[j])) {
+                j--;
+                continue;
+            }
+            //switch
+            char temp = chars[i];
+            chars[i] = chars[j];
+            chars[j] = temp;
+            i++;
+            j--;
         }
-
         return String.valueOf(chars);
     }
 
     private boolean isVowels(char c){
-        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+        if (c=='a' || c=='e' || c=='i' || c=='o' || c=='u'
+                || c=='A' || c=='E' || c=='I' || c=='O' || c=='U') {
             return true;
         } else {
             return false;

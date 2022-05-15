@@ -22,7 +22,7 @@ import java.util.*;
  * Output: false
  * Example 3:
  *
- * Input: pattern = "aaaa", s = "dog cat cat dog"
+ * Input: pattern = "abba", s = "dog dog dog dog"
  * Output: false
  */
 public class LeetCode290 {
@@ -57,5 +57,4 @@ public class LeetCode290 {
         String s = "cat dog dog cat";
         Assert.assertTrue(wordPattern(pattern, s));
     }
-
 }

@@ -22,29 +22,21 @@ import org.junit.Test;
 public class LeetCode283 {
 
     public void moveZeroes(int[] nums) {
-        int i = 0;
-        int j = 0;
-
-        //find the first element whose value is 0;
-        while (j < nums.length) {
-            if (nums[i] != 0) {
+        int i=0;
+        for (int j=1; j<nums.length; j++) {
+            if (nums[i]!=0 && nums[j]!=0) {
                 i++;
-                j++;
-            } else {
-                j++;
-                break;
+                continue;
             }
-        }
-
-        while (j < nums.length) {
-            if (nums[j] != 0) {
+            if (nums[i]!=0 && nums[j]==0) {
+                i++;
+                continue;
+            }
+            if (nums[i]==0 && nums[j]!=0) {
                 int temp = nums[i];
                 nums[i] = nums[j];
                 nums[j] = temp;
                 i++;
-                j++;
-            } else {
-                j++;
             }
         }
     }

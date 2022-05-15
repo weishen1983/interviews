@@ -12,13 +12,13 @@ public class LeetCode160 {
 
     //test
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        Set<Integer> set = new HashSet<>();
+        Set<ListNode> set = new HashSet<>();
         while (headA != null) {
-            set.add(headA.hashCode());
+            set.add(headA);
             headA = headA.next;
         }
         while (headB != null) {
-            if (set.contains(headB.hashCode())) {
+            if (set.contains(headB)) {
                 return headB;
             }
             headB = headB.next;

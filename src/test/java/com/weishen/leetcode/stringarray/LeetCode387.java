@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
@@ -25,26 +26,20 @@ import java.util.Map;
  * Output: -1
  */
 public class LeetCode387 {
-
     public int firstUniqChar(String s) {
-        char[] chars = s.toCharArray();
-        if (chars.length == 0) {
-            return 0;
-        }
-
         Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < chars.length; i++) {
-            char key = chars[i];
-            if (map.containsKey(key)) {
-                map.put(key, map.get(key) + 1);
+
+        for (int i=0; i<s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                map.put(s.charAt(i), -1); //-1 means this is not unique
             } else {
-                map.put(key, 1);
+                map.put(s.charAt(i), i);
             }
         }
 
-        for (int i = 0; i < chars.length; i++) {
-            if (map.get(chars[i]).equals(1)) {
-                return i;
+        for (int i=0; i<s.length(); i++) {
+            if (map.get(s.charAt(i))!=-1) {
+                return map.get(s.charAt(i));
             }
         }
 
@@ -53,8 +48,8 @@ public class LeetCode387 {
 
     @Test
     public void test(){
-        String inputStr = "aabb";
-        int expectResult = -1;
+        String inputStr = "leetcode";
+        int expectResult = 0;
         Assert.assertEquals(expectResult, firstUniqChar(inputStr));
     }
 }

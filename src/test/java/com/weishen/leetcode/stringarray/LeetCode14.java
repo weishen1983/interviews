@@ -24,7 +24,6 @@ public class LeetCode14 {
 
     public String longestCommonPrefix(String[] strs) {
         String prefix = strs[0];
-
         for (int i = 1; i < strs.length; i++) {
             char[] strChars = strs[i].toCharArray();
             int loopLength = prefix.length() < strChars.length ? prefix.length() : strChars.length;
@@ -40,7 +39,6 @@ public class LeetCode14 {
                 prefix = new String(strChars, 0, strChars.length);
             }
         }
-
         return prefix;
     }
 
